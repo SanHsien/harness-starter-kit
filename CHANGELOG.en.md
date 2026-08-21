@@ -8,6 +8,13 @@ Entries marked `fork` are this fork's changes relative to
 
 ---
 
+## 2026-08-21
+
+### Added
+
+- **`fork` Scheduled upstream check.** `.github/workflows/upstream-check.yml` runs every Monday at 11:00 Asia/Taipei, comparing `agentcrew-academy/harness-starter-kit` `main` against `reviewed_through` in `scripts/upstream_baseline.json`. Unreviewed commits fail the workflow and are listed, with their files, in the run summary. Until now, noticing upstream movement depended on someone remembering to fetch.
+- **`fork` `.github/dependabot.yml`.** This kit ships no package manifest, so the only machine-updatable dependency surface is the actions pinned in the workflows; they are checked weekly.
+
 ## 2026-08-18
 
 ### Added

@@ -8,6 +8,13 @@
 
 ---
 
+## 2026-08-21
+
+### 新增
+
+- **`fork` 上游更新排程檢查。** `.github/workflows/upstream-check.yml` 每週一 11:00（Asia/Taipei）比對 `agentcrew-academy/harness-starter-kit` 的 `main` 與 `scripts/upstream_baseline.json` 的 `reviewed_through`，有未審 commit 就讓 workflow 失敗並在 summary 列出 commit 與檔案清單。之前「有沒有新上游」全靠人記得去 fetch。
+- **`fork` `.github/dependabot.yml`。** 本 kit 沒有套件 manifest，唯一可自動更新的依賴面是 workflow 裡釘住的 actions；每週一檢查一次。
+
 ## 2026-08-18
 
 ### 新增

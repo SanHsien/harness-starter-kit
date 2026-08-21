@@ -10,3 +10,6 @@ __pycache__/
 # review-loop artifacts (regenerated on every render; not tracked)
 *.review-state.json
 *-review-v*.html
+
+# upstream check report (regenerated on every run; not tracked)
+upstream-review-report.md

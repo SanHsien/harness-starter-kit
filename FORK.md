@@ -59,6 +59,13 @@ python scripts/verify-install.py                               # exit 0 才算�
 
 ## 從上游同步
 
+不用自己記得去看。`.github/workflows/upstream-check.yml` 每週一 11:00（Asia/Taipei）跑
+`scripts/check_upstream_updates.py`，比對上游 `main` 與 `scripts/upstream_baseline.json`
+記的 `reviewed_through`，有沒審過的 commit 就讓 workflow 失敗並在 summary 列出清單。
+審完把採用／不採用寫進本檔，再把 baseline 往前推——**先驗證，後推進**，不要為了讓紅燈消失
+直接改 SHA。手動想跑就 `python scripts/check_upstream_updates.py`。
+
+
 ```bash
 git fetch upstream
 git log --oneline HEAD..upstream/main

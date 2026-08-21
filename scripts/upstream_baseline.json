@@ -1,0 +1,8 @@
+{
+  "repo": "https://github.com/agentcrew-academy/harness-starter-kit.git",
+  "branch": "main",
+  "reviewed_through": "8c0765a30bf11a66bdae46447f0fa79322aef222",
+  "reviewed_date": "2026-08-21",
+  "notes": "Baseline set when the scheduled check was added. 6de7c3a (UTF-8 stdout) was adopted in 322a428; 8c0765a (stop tracking __pycache__) needs no port because .gitignore here already excludes __pycache__/ and *.py[cod]. Record adopt/skip decisions in FORK.md before advancing this file.",
+  "decision_log": "FORK.md"
+}
