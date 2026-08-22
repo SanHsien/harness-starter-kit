@@ -158,6 +158,8 @@ python scripts/verify-install.py
 
 不要因為是小改動就直接推 `main`，也不要為了「完整」新增與產品風險無關的治理流程。
 
+- **合併任何 PR 前先讀 diff**（包含 Dependabot 開的）：`gh pr diff <編號>`。CI 綠燈證明的是「測試沒紅」，不是「改了什麼、該不該進 main」——lockfile 的連鎖升級、transitive major、跨出宣告範圍的變更，只有讀 diff 看得到。核准或合併訊息要寫出讀到什麼、為什麼可接受。
+
 ### 變更 hook / installer 時
 
 至少跑：
@@ -192,3 +194,4 @@ python -m unittest discover -s tests -p "test_*.py"
 - `CHANGELOG.md` / `CHANGELOG.en.md`：實際行為、相容性、安裝契約或 release-relevant 變更。
 
 純文字整理或不改產品行為的維護，不必機械式製造 changelog / release。中英文使用者文件若改到同一契約，兩邊要同步。
+
