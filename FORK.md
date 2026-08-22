@@ -107,3 +107,13 @@ python scripts/verify-install.py
 `.agents/skills/*` 是指向 `skills/` 的 git symlink。Windows 上沒開 Developer Mode 或
 `core.symlinks=true` 時會被 checkout 成內容是路徑字串的普通檔案。無害，但不要提交
 「把它們改成複本」這種修正。
+
+## 2026-08-22：上游 PR、issue、分支盤點
+
+上游當時 **0 個 open PR、0 個 open issue、1 個分支**。沒有可引用的項目。
+
+上游不用 PR 流程（改動直接進 `main`），所以本 fork 的審查單位就是 commit，PR 這條線沒有東西
+可追。issue 日後出現時的判準：只有會改變本 fork 要驗什麼的才追（hook 行為、Windows 路徑與權限、
+授權），純功能請求隨 commit 進來。
+
+水位（PR 0、issue 0，盤點日 2026-08-22）記在 `scripts/upstream_baseline.json`。
