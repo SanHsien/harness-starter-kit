@@ -7,7 +7,7 @@
 
 **把「請 AI 記得守規則」變成會實際攔截的檢查。**
 
-Harness Guard 是一套給 AI coding agent 使用的 guardrail kit：提供 5 個 hook、11 套 workflow skills、Claude / Gemini 規則檔範本，以及可重現安裝與 live-fire 驗證腳本。Windows 是本 fork 的主要強化方向。
+Harness Guard 是一套給 AI coding agent 使用的 guardrail kit：提供 5 個 hook、12 套 workflow skills、Claude / Gemini 規則檔範本，以及可重現安裝與 live-fire 驗證腳本。Windows 是本 fork 的主要強化方向。
 
 本 repo fork 自 [`agentcrew-academy/harness-starter-kit`](https://github.com/agentcrew-academy/harness-starter-kit)；上游來源、改寫範圍與 attribution 見 [`FORK.md`](FORK.md) 與 [`NOTICE`](NOTICE)。
 
@@ -37,9 +37,9 @@ Harness Guard 專注在幾個容易造成實際損失的情境：
 
 完整 hook 介面與平台版本見 [`hooks/`](hooks)。
 
-## 11 套 workflow skills
+## 12 套 workflow skills
 
-`explain`、`polite`、`first-principles`、`checkpoint`、`neat-freak`、`review-loop`、`info-diet`、`asd-ste100`、`iso-24495`、`verification-protocol`、`task-orchestrator`。
+`explain`、`polite`、`first-principles`、`checkpoint`、`neat-freak`、`review-loop`、`info-diet`、`asd-ste100`、`iso-24495`、`phantom-pushback`、`verification-protocol`、`task-orchestrator`。
 
 這些是可選的工作流程，不是五個安全 hook 的必要依賴。內容在 [`skills/`](skills)。
 

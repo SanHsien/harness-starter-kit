@@ -7,7 +7,7 @@ English | [中文版](README.md)
 
 **Turn “please remember the rules” into executable checks that can actually block an action.**
 
-Harness Guard is a guardrail kit for AI coding agents: five hooks, eleven optional workflow skills, Claude / Gemini rule-file templates, a reproducible installer, and a live-fire installation verifier. Windows support is a major focus of this fork.
+Harness Guard is a guardrail kit for AI coding agents: five hooks, twelve optional workflow skills, Claude / Gemini rule-file templates, a reproducible installer, and a live-fire installation verifier. Windows support is a major focus of this fork.
 
 This repository is a fork of [`agentcrew-academy/harness-starter-kit`](https://github.com/agentcrew-academy/harness-starter-kit). See [`FORK.md`](FORK.md) and [`NOTICE`](NOTICE) for upstream provenance, fork-specific changes, and attribution.
 
@@ -37,9 +37,9 @@ These guardrails are defense-in-depth, not a sandbox or formal policy engine. Th
 
 See [`hooks/`](hooks) for platform-specific implementations and interface details.
 
-## Eleven workflow skills
+## Twelve workflow skills
 
-`explain`, `polite`, `first-principles`, `checkpoint`, `neat-freak`, `review-loop`, `info-diet`, `asd-ste100`, `iso-24495`, `verification-protocol`, and `task-orchestrator`.
+`explain`, `polite`, `first-principles`, `checkpoint`, `neat-freak`, `review-loop`, `info-diet`, `asd-ste100`, `iso-24495`, `phantom-pushback`, `verification-protocol`, and `task-orchestrator`.
 
 They are optional workflows, not required dependencies of the five guardrail hooks. See [`skills/`](skills).
 

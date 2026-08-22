@@ -8,6 +8,13 @@ Entries marked `fork` are this fork's changes relative to
 
 ---
 
+## 2026-08-22
+
+### Added
+
+- **`phantom-pushback` skill, adopted from upstream `3baf40e`.** It targets the closing paragraph where an AI invents a position you never held and then corrects you for it. Being brief does not fix it, because the passage looks like real content. The test is one question: can you point at something you actually said or wrote where you hold that position? If not, it goes. Genuine criticism of your code, numbers, or plan is untouched, and a real warning buried in a closing caveat is moved to the top rather than deleted. Skill count 11 -> 12.
+- **Upstream review ledger in `FORK.md`.** Every upstream commit now carries an adopt/skip decision and its reason in one table, and `scripts/upstream_baseline.json` advances to `3baf40e`.
+
 ## 2026-08-21
 
 ### Added

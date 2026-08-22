@@ -90,6 +90,18 @@ python scripts/verify-install.py
 
 ---
 
+## 上游審視紀錄
+
+| 上游 commit | 日期 | 決策 |
+|---|---|---|
+| `3baf40e` feat(skills): add phantom-pushback | 2026-08-21 | **採用**。偵測「AI 虛構一個你沒說過的立場再來反駁你」的收尾段落，是上游原創、非修本 fork 改過的東西，與本 kit 的 guardrail 定位一致。skill 目錄原樣取用；README 的技能數與清單改寫進本 fork 的雙語結構。安裝器自動列舉 `skills/`，四個 agent target 的 dry-run 都確認會安裝。 |
+| `6de7c3a` fix(no-emoji-guard): UTF-8 stdout | 2026-08-20 | **採用**（322a428）。這是本 fork 送回上游的 encoding 修正的後續。 |
+| `8c0765a` chore: stop tracking `__pycache__` | 2026-08-20 | **無需移植**。本 fork 的 `.gitignore` 早已排除 `__pycache__/` 與 `*.py[cod]`。 |
+
+審視後才推進 `scripts/upstream_baseline.json`；不要為了讓紅燈消失直接改 SHA。
+
+---
+
 ## symlink
 
 `.agents/skills/*` 是指向 `skills/` 的 git symlink。Windows 上沒開 Developer Mode 或
