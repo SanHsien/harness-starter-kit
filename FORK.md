@@ -116,4 +116,6 @@ python scripts/verify-install.py
 可追。issue 日後出現時的判準：只有會改變本 fork 要驗什麼的才追（hook 行為、Windows 路徑與權限、
 授權），純功能請求隨 commit 進來。
 
+分支只有預設分支一條，已比對確認沒有其他帶獨佔 commit 的線。
+
 水位（PR 0、issue 0，盤點日 2026-08-22）記在 `scripts/upstream_baseline.json`。
