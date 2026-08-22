@@ -10,6 +10,10 @@ Entries marked `fork` are this fork's changes relative to
 
 ## 2026-08-22
 
+### Fixed
+
+- **The installer no longer widens file permissions.** The CodeQL scan added today flagged four sites on its first run: hook files were written `0o755` (world-readable and world-executable), and the retry path for a skill folder that will not delete ran `chmod 0o777` (world-writable) first. These hooks are run by the user who installed them and by nobody else, so no other local account needs to read or execute them, and a delete needs only the owner's rwx. All four become `stat.S_IRWXU` (0o700). A guardrail kit should not be the thing that widens a permission.
+
 ### Added
 
 - **`phantom-pushback` skill, adopted from upstream `3baf40e`.** It targets the closing paragraph where an AI invents a position you never held and then corrects you for it. Being brief does not fix it, because the passage looks like real content. The test is one question: can you point at something you actually said or wrote where you hold that position? If not, it goes. Genuine criticism of your code, numbers, or plan is untouched, and a real warning buried in a closing caveat is moved to the top rather than deleted. Skill count 11 -> 12.

@@ -32,6 +32,7 @@ import json
 import os
 import platform
 import shutil
+import stat
 import sys
 import time
 from pathlib import Path
@@ -375,7 +376,10 @@ def robust_rmtree(path):
     loud failure.
     """
     def _fix_permission(func, p):
-        os.chmod(p, 0o777)
+        # Owner-only rwx is all a delete needs. 0o777 also handed every other
+        # local account write access to the path for the moment before it
+        # disappeared, which is a race worth not having.
+        os.chmod(p, stat.S_IRWXU)
         func(p)
 
     if sys.version_info >= (3, 12):
@@ -490,7 +494,11 @@ def install_for_claude(args):
     for _spec, source, target, _command, _state in planned:
         copy_hook_file(source, target)
         if not IS_WINDOWS:
-            os.chmod(target, 0o755)
+            # 0o700, not 0o755: these hooks run as the user who installed them
+            # and nobody else, so no other local account needs to read or run
+            # them. A guardrail kit should not be the thing that widens a
+            # permission.
+            os.chmod(target, stat.S_IRWXU)
     print("\ncopied %d file(s) into %s" % (len(planned), hooks_dir))
 
     if settings_path.exists():
@@ -619,7 +627,11 @@ def install_for_cursor(args):
     for _spec, source, target, _command, _state in planned:
         copy_hook_file(source, target)
         if not IS_WINDOWS:
-            os.chmod(target, 0o755)
+            # 0o700, not 0o755: these hooks run as the user who installed them
+            # and nobody else, so no other local account needs to read or run
+            # them. A guardrail kit should not be the thing that widens a
+            # permission.
+            os.chmod(target, stat.S_IRWXU)
     print("\ncopied %d file(s) into %s" % (len(planned), hooks_dir))
 
     backup_json(settings_path, cursor_dir / "backups")
@@ -698,7 +710,11 @@ def install_for_codex(args):
     for _spec, source, target, _command, _state in planned:
         copy_hook_file(source, target)
         if not IS_WINDOWS:
-            os.chmod(target, 0o755)
+            # 0o700, not 0o755: these hooks run as the user who installed them
+            # and nobody else, so no other local account needs to read or run
+            # them. A guardrail kit should not be the thing that widens a
+            # permission.
+            os.chmod(target, stat.S_IRWXU)
     print("\ncopied %d file(s) into %s" % (len(planned), hooks_dir))
 
     backup_json(settings_path, codex_dir / "backups")
