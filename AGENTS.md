@@ -152,11 +152,10 @@ python scripts/verify-install.py
 
 ## 維護 repo 本身
 
-正常流程：
+正常流程：**維護者的日常變更直接推 `origin/main`**，不開功能分支、不開維護 PR（主人 2026-08-22 指示）。
+只有在需要他人審查、或改動風險高到值得先讓 CI 在 PR 上跑一輪時，才退回 **branch → PR → CI → merge**。
 
-**branch → PR → CI → merge**
-
-不要因為是小改動就直接推 `main`，也不要為了「完整」新增與產品風險無關的治理流程。
+不要為了「完整」新增與產品風險無關的治理流程。
 
 - **合併任何 PR 前先讀 diff**（包含 Dependabot 開的）：`gh pr diff <編號>`。CI 綠燈證明的是「測試沒紅」，不是「改了什麼、該不該進 main」——lockfile 的連鎖升級、transitive major、跨出宣告範圍的變更，只有讀 diff 看得到。核准或合併訊息要寫出讀到什麼、為什麼可接受。
 
@@ -195,3 +194,14 @@ python -m unittest discover -s tests -p "test_*.py"
 
 純文字整理或不改產品行為的維護，不必機械式製造 changelog / release。中英文使用者文件若改到同一契約，兩邊要同步。
 
+## 對外邊界：PR 只打本 fork
+
+- **PR、push、release 一律指向 `SanHsien/harness-guard`。** 對上游 `agentcrew-academy/harness-starter-kit` 開 PR、push 或發 release
+  需要主人在當次對話明確同意回貢；「fork 一份」「建開發環境」「比照其他 repo」都不是同意。
+- 根因是機制不是粗心：`gh` 在 fork clone 的**預設 repo 就是上游**（`gh repo set-default --view` 會回
+  `agentcrew-academy/harness-starter-kit`），裸跑 `gh pr create` 必然打上去。每個 clone 先跑一次
+  `gh repo set-default SanHsien/harness-guard`。
+- 開 PR 仍明寫 `gh pr create --repo SanHsien/harness-guard --base <分支> --head <分支>`，並**讀輸出的 URL**，
+  owner 必須是 `SanHsien`。不是就立刻 `gh pr close` 留言道歉說明，再對 origin 重開。
+- 2026-08-22 一天內兩個工作階段各誤開一個上游 PR（`lidge-jun/opencodex#2373`、
+  `hamanpaul/paulsha-cortex#787`）。批次跑多個 repo 時最容易略過確認，而那正是兩次出事的場合。
